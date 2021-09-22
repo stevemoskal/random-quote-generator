@@ -26,23 +26,54 @@ const quotes = [
     quote: "Happiness is not something readymade, it comes from our own actions.", source: "Dalai Lama"
   },
   {
-    quote: "If I cannot do great things, I can do small things in a great way.", source: "Martin Luther King, Jr."
+    quote: "If I cannot do great things, I can do small things in a great way.", source: "Martin Luther King, Jr.", tags:"Motivational"
   }
 ];
 
 // 'getRandomQuote' function that returns a random quote from the 'quotes' array
 
 function getRandomQuote() {
-  let activeQuote = Math.floor(Math.Random * quotes.length);
+  let activeQuote = Math.floor(Math.random() * quotes.length);
   return activeQuote;
 }
 
-/***
- * `printQuote` function
-***/
+// 'getRandomColour' function sets a new random background colour, colours are set to dark for contrast with white text
+// function help provided by https://webdesign.tutsplus.com/tutorials/generate-random-background-colors-javascript--cms-37030
 
-console.log(getRandomQuote());
+const getRandomHue = (maxH) => {
+  return Math.floor(Math.random() * maxH);
+}
+const getRandomColour = () => {
+  const h = getRandomHue(360);
+  return `hsl(${h}deg, 50%, 20%)`;
+}
 
+
+// 'printQuote' function that will print the active random quote to the page, and change the background colour
+
+function printQuote() {
+  let aq = getRandomQuote();
+  if (quotes[aq].hasOwnProperty('citation' && 'date')) {
+    document.getElementById("quote-box").innerHTML = `<p class="quote">${quotes[aq].quote}</p>
+    <p class="source">${quotes[aq].source}
+      <span class="citation">${quotes[aq].citation}</span>
+      <span class="year">${quotes[aq].date}</span>
+    </p>`;
+  } else if (quotes[aq].hasOwnProperty('tags')) {
+    document.getElementById("quote-box").innerHTML = `<p class="quote">${quotes[aq].quote}</p>
+    <p class="source">${quotes[aq].source}
+      <span class="year">${quotes[aq].tags}</span>
+    </p>`;
+  } else {
+    document.getElementById("quote-box").innerHTML = `<p class="quote">${quotes[aq].quote}</p>
+    <p class="source">${quotes[aq].source}</p>`;
+  }
+  document.body.style.backgroundColor = getRandomColour();
+}
+
+// 'setInterval' to refresh the quote every 15 seconds even if the button is not clicked
+
+window.setInterval(printQuote(), 500);
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
