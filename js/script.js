@@ -69,11 +69,13 @@ function printQuote() {
     <p class="source">${quotes[aq].source}</p>`;
   }
   document.body.style.backgroundColor = getRandomColour();
+
 }
 
 // 'setInterval' to refresh the quote every 15 seconds even if the button is not clicked
 
-window.setInterval(printQuote(), 500);
+var timer = setInterval(printQuote(), 15000);
+
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
