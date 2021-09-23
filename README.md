@@ -36,8 +36,8 @@ var timer = setInterval(printQuote, 15000);
 #### Framework Used
 
 This project was built using:
-  - Atom Text Editor (https://atom.io)
-  - Github Desktop (https://desktop.github.com)
+  - [Atom Text Editor](https://atom.io)
+  - [Github Desktop](https://desktop.github.com)
 
 Thank you for viewing my repository!
 
