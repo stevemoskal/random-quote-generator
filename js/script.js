@@ -20,14 +20,27 @@ const quotes = [
     quote: "Learn as if you will live forever, live like you will die tomorrow.", source: "Mahatma Gandhi"
   },
   {
-    quote: "All our dreams can come true if we have the courage to pursue them.", source: "Walt Disney"
+    quote: "All our dreams can come true if we have the courage to pursue them.", source: "Walt Disney", tags: "Motivational"
   },
   {
     quote: "Happiness is not something readymade, it comes from our own actions.", source: "Dalai Lama"
   },
   {
     quote: "If I cannot do great things, I can do small things in a great way.", source: "Martin Luther King, Jr.", tags:"Motivational"
+  },
+  {
+    quote: "Success is not final, failure is not fatal; it is the courage to continue that counts", source: "Winston Churchill", tags: "Motivational"
+  },
+  {
+    quote: "Believe you can, and you're halfway there.", source: "Theodore Roosevelt"
+  },
+  {
+    quote: "Life is like a bicycle. To keep your balance, you have to keep moving.", source: "Albert Einstein"
+  },
+  {
+    quote: "You are never too old to set another goal or to dream a new dream", source: "C.S. Lewis"
   }
+
 ];
 
 // 'getRandomQuote' function that returns a random quote from the 'quotes' array
@@ -49,7 +62,7 @@ const getRandomColour = () => {
 }
 
 
-// 'printQuote' function that will print the active random quote to the page, and change the background colour
+// 'printQuote' function that will print the active random quote to the page, change the background colour, and reset the timer
 
 function printQuote() {
   let activeQuote = getRandomQuote();
@@ -71,6 +84,8 @@ function printQuote() {
     <p class="source">${activeQuote.source}</p>`;
   }
   document.body.style.backgroundColor = getRandomColour();
+  clearTimeout(timer);
+  timer = setInterval(printQuote, 15000);
 }
 
 // 'setInterval' to refresh the quote every 15 seconds even if the button is not clicked
