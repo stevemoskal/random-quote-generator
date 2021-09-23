@@ -14,7 +14,7 @@ const quotes = [
     quote: "Life is never fair, and perhaps it is a good thing for most of us that it is not.", source: "Oscar Wilde"
   },
   {
-    quote: "Today you are you, that is truer than true. There is no one alive who is you-er than you.", source: "Dr. Seuss", citation: "Happy Birthday to You!", date: "1959"
+    quote: "Today you are you, that is truer than true. There is no one alive who is you-er than you.", source: "Dr. Seuss", citation: "Happy Birthday to You!", year: "1959"
   },
   {
     quote: "Learn as if you will live forever, live like you will die tomorrow.", source: "Mahatma Gandhi"
@@ -33,8 +33,8 @@ const quotes = [
 // 'getRandomQuote' function that returns a random quote from the 'quotes' array
 
 function getRandomQuote() {
-  let activeQuote = Math.floor(Math.random() * quotes.length);
-  return activeQuote;
+  let quoteIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[quoteIndex];
 }
 
 // 'getRandomColour' function sets a new random background colour, colours are set to dark for contrast with white text
@@ -52,21 +52,21 @@ const getRandomColour = () => {
 // 'printQuote' function that will print the active random quote to the page, and change the background colour
 
 function printQuote() {
-  let aq = getRandomQuote();
-  if (quotes[aq].hasOwnProperty('citation' && 'date')) {
-    document.getElementById("quote-box").innerHTML = `<p class="quote">${quotes[aq].quote}</p>
-    <p class="source">${quotes[aq].source}
-      <span class="citation">${quotes[aq].citation}</span>
-      <span class="year">${quotes[aq].date}</span>
+  let activeQuote = getRandomQuote();
+  if (activeQuote.hasOwnProperty('citation' && 'year')) {
+    document.getElementById("quote-box").innerHTML = `<p class="quote">${activeQuote.quote}</p>
+    <p class="source">${activeQuote.source}
+      <span class="citation">${activeQuote.citation}</span>
+      <span class="year">${activeQuote.year}</span>
     </p>`;
-  } else if (quotes[aq].hasOwnProperty('tags')) {
-    document.getElementById("quote-box").innerHTML = `<p class="quote">${quotes[aq].quote}</p>
-    <p class="source">${quotes[aq].source}
-      <span class="year">${quotes[aq].tags}</span>
+  } else if (activeQuote.hasOwnProperty('tags')) {
+    document.getElementById("quote-box").innerHTML = `<p class="quote">${activeQuote.quote}</p>
+    <p class="source">${activeQuote.source}
+      <span class="year">${activeQuote.tags}</span>
     </p>`;
   } else {
-    document.getElementById("quote-box").innerHTML = `<p class="quote">${quotes[aq].quote}</p>
-    <p class="source">${quotes[aq].source}</p>`;
+    document.getElementById("quote-box").innerHTML = `<p class="quote">${activeQuote.quote}</p>
+    <p class="source">${activeQuote.source}</p>`;
   }
   document.body.style.backgroundColor = getRandomColour();
 
@@ -74,7 +74,7 @@ function printQuote() {
 
 // 'setInterval' to refresh the quote every 15 seconds even if the button is not clicked
 
-var timer = setInterval(printQuote(), 15000);
+var timer = setInterval(printQuote, 15000);
 
 /***
  * click event listener for the print quote button
