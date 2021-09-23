@@ -7,7 +7,7 @@ project 1 - A Random Quote Generator
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
-// 'quotes' array containing a list of motivational quotes
+// 'quotes' array containing a list of quotes
 
 const quotes = [
   {
@@ -54,13 +54,15 @@ const getRandomColour = () => {
 function printQuote() {
   let activeQuote = getRandomQuote();
   if (activeQuote.hasOwnProperty('citation' && 'year')) {
-    document.getElementById("quote-box").innerHTML = `<p class="quote">${activeQuote.quote}</p>
+    document.getElementById("quote-box").innerHTML = `
+    <p class="quote">${activeQuote.quote}</p>
     <p class="source">${activeQuote.source}
       <span class="citation">${activeQuote.citation}</span>
       <span class="year">${activeQuote.year}</span>
     </p>`;
   } else if (activeQuote.hasOwnProperty('tags')) {
-    document.getElementById("quote-box").innerHTML = `<p class="quote">${activeQuote.quote}</p>
+    document.getElementById("quote-box").innerHTML = `
+    <p class="quote">${activeQuote.quote}</p>
     <p class="source">${activeQuote.source}
       <span class="year">${activeQuote.tags}</span>
     </p>`;
@@ -69,7 +71,6 @@ function printQuote() {
     <p class="source">${activeQuote.source}</p>`;
   }
   document.body.style.backgroundColor = getRandomColour();
-
 }
 
 // 'setInterval' to refresh the quote every 15 seconds even if the button is not clicked
