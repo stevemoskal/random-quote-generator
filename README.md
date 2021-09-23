@@ -7,7 +7,7 @@ This repository was designed for the Treehouse TechDegree course, Project-1.
 
 This project is currently complete and I am hoping to obtain an "Exceeds Expectations" grading based on the grading key provided.
 
-There are three different types of code contained in this repository, HTML, CSS and JavaScript. The HTML and CSS was provided by Treehouse, and it was my object to complete the JavaScript code.
+There are three different types of code contained in this repository, HTML, CSS and JavaScript. The HTML and CSS were provided by Treehouse, and it was my objective to complete the JavaScript code.
 
 Most of my experience prior to this project was obtained by completing the "Front End Web Development" track on the Treehouse website.
 
