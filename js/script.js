@@ -40,14 +40,19 @@ const quotes = [
   {
     quote: "You are never too old to set another goal or to dream a new dream", source: "C.S. Lewis"
   }
-
 ];
+
+// scope variables globally
+let activeQuoteIndex = null;
+let previousQuoteIndex = null;
 
 // 'getRandomQuote' function that returns a random quote from the 'quotes' array
 
 function getRandomQuote() {
-  let quoteIndex = Math.floor(Math.random() * quotes.length);
-  return quotes[quoteIndex];
+  if (activeQuoteIndex != null) previousQuoteIndex = activeQuoteIndex; // if activeQuoteIndex has a value, then set previousQuoteIndex to that value
+  activeQuoteIndex = Math.floor(Math.random() * quotes.length); // generate a new value for activeQuoteIndex
+  if (quotes.length > 1 && activeQuoteIndex == previousQuoteIndex) getRandomQuote(); // if the values are the same, call the function again. make sure that quotes.length is more than 1 otherwise this will cause an infinite loop
+  return quotes[activeQuoteIndex]; // this line won't be evaluated until the quote indexes are different
 }
 
 // 'getRandomColour' function sets a new random background colour, colours are set to dark for contrast with white text
